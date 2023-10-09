@@ -8,7 +8,7 @@
       <header
         class="flex w-full px-40 py-3 justify-between font-semibold text-4xl border-b-[1px] mt-5"
       >
-        <h1>Notes</h1>
+        <h1>Notess</h1>
         <button
           class="rounded-full bg-yellow-300 w-12 h-12 self-center text-center inline-block align-middle transition-all ease-in-out duration-100 active:text-3xl active:bg-black active:text-yellow-300 hover:bg-black hover:text-yellow-300"
         >
