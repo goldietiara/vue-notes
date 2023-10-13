@@ -5,11 +5,11 @@ const modal = ref(false);
 const createNote = ref("");
 const notes = ref([]);
 const bgColor = ref("bg-yellow-300");
-const errorMassage = ref(false);
+const errorMassage = ref("");
 
 function addNote() {
   if (createNote.value.length < 10) {
-    return (errorMassage.value = true);
+    return (errorMassage.value = "Notes should be 10 characters or longer");
   }
   notes.value.push({
     id: Math.floor(Math.random() * 1000000),
@@ -20,7 +20,7 @@ function addNote() {
   modal.value = false;
   createNote.value = "";
   bgColor.value = "bg-yellow-300";
-  errorMassage.value = false;
+  errorMassage.value = "";
 }
 </script>
 
@@ -44,9 +44,7 @@ function addNote() {
           class="focus:outline-none bg-transparent"
           v-model="createNote"
         ></textarea>
-        <p class="text-red-400" v-show="errorMassage">
-          Notes should be 10 characters or longer
-        </p>
+        <p class="text-red-400" v-show="errorMassage">{{ errorMassage }}</p>
         <div class="flex gap-5 justify-between items-center">
           <div class="flex gap-5">
             <button
@@ -102,6 +100,7 @@ function addNote() {
         >
           <!-- <div
             class="absolute invisible right-2 top-2 h-6 w-6 bg-black/70 rounded-full text-center text-sm text-white/90 group-hover:visible group-active:visible"
+            
           >
             x
           </div> -->
