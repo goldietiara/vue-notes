@@ -1,12 +1,16 @@
 <script setup>
-import { ref, shallowReactive } from "vue";
+import { ref } from "vue";
 
 const modal = ref(false);
 const createNote = ref("");
 const notes = ref([]);
 const bgColor = ref("bg-yellow-300");
+const errorMassage = ref(false);
 
 function addNote() {
+  if (createNote.value.length < 10) {
+    return (errorMassage.value = true);
+  }
   notes.value.push({
     id: Math.floor(Math.random() * 1000000),
     text: createNote.value,
@@ -16,6 +20,7 @@ function addNote() {
   modal.value = false;
   createNote.value = "";
   bgColor.value = "bg-yellow-300";
+  errorMassage.value = false;
 }
 </script>
 
@@ -39,6 +44,9 @@ function addNote() {
           class="focus:outline-none bg-transparent"
           v-model="createNote"
         ></textarea>
+        <p class="text-red-400" v-show="errorMassage">
+          Notes should be 10 characters or longer
+        </p>
         <div class="flex gap-5 justify-between items-center">
           <div class="flex gap-5">
             <button
