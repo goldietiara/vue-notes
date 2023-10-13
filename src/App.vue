@@ -42,7 +42,7 @@ function addNote() {
           rows="5"
           placeholder="Take a Note..."
           class="focus:outline-none bg-transparent"
-          v-model="createNote"
+          v-model.trim="createNote"
         ></textarea>
         <p class="text-red-400" v-show="errorMassage">{{ errorMassage }}</p>
         <div class="flex gap-5 justify-between items-center">
